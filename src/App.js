@@ -1,27 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
-import Weather from './components/Weather';
+import { useState, useEffect } from 'react'
+import './App.css'
+import Ticketmaster from './components/Ticketmaster'
+import Weather from './components/Weather'
 
 function App() {
+  const [location, setLocation] = useState({ latitude: 0, longitude: 0 })
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(position => {
+      console.log(position)
+      setLocation({
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+      })
+    })
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
       <Weather />
+      <Ticketmaster long={location.longitude} lat={location.latitude} />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
