@@ -15,7 +15,8 @@ const Weather = (props) => {
   const displayTemp = (val) => {
     if (!showFahrenheit) {
         scale = "C";
-      return Math.floor((((val - 32) * 5) / 9) * 100) / 100;
+        let celcius = ((((val - 32) * 5) / 9) * 100) / 100
+      return Math.floor(celcius);
     }
     scale= "F";
     return Math.floor(val);
