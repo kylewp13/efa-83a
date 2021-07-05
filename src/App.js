@@ -18,10 +18,10 @@ function App() {
 
   return (
     <div className='App'>
-      <Weather />
+      <Weather long={location.longitude} lat={location.latitude}/>
       <Ticketmaster long={location.longitude} lat={location.latitude} />
     </div>
   )
 }
 
-export default App
+export default App;
