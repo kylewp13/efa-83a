@@ -3,15 +3,14 @@ import { useState } from "react";
 
 const Weather = (props) => {
     
-const apiKey = "64af9d5996df5b93f42b6448709a5c4d";
-  let scale = "F";  
-
   const [temp, setTemp] = useState(0);
   const [feelsLike, setFeelsLike] = useState(0);
   const [weather, setWeather] = useState();
   const [showFahrenheit, setShowFarenheit] = useState(true);
-
-  const url = `http://api.openweathermap.org/data/2.5/weather?lat=${props.lat}&lon=${props.long}&appid=${apiKey}&units=imperial`;
+  
+  let scale = "F";  
+  
+  const url = `http://api.openweathermap.org/data/2.5/weather?lat=${props.lat}&lon=${props.long}&appid=${process.env.REACT_APP_OW_API_KEY}&units=imperial`;
 
   const displayTemp = (val) => {
     if (!showFahrenheit) {

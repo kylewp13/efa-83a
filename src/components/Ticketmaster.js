@@ -22,6 +22,7 @@ const Ticketmaster = ({ lat, long }) => {
   //     .then(json => console.log(json))
 
   useEffect(() => {
+    console.log(lat, long)
     fetchEvents()
   })
 
