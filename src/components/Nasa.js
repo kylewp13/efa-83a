@@ -7,6 +7,8 @@ const date = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.ge
 const Nasa = (props) => {
   const [picture, setPicture] = useState("");
 
+  console.log("NASA", props)
+
   let lat = 42.3601;
   let lon = 71.0589;
 
