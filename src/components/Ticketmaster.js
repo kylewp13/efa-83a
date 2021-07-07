@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import '../components/Ticketmaster.css'
 
 const Ticketmaster = ({ lat, long }) => {
   const [events, setEvents] = useState([])
@@ -17,19 +18,41 @@ const Ticketmaster = ({ lat, long }) => {
     }
   }
 
-  //   fetch(url + latlon)
-  //     .then(res => res.json())
-  //     .then(json => console.log(json))
-
   useEffect(() => {
     fetchEvents()
-  })
+  }, [lat, long])
+
+  // let eventMapping = events => {
+  //   return events?.map((event, index) => (
+  //     <div key={index}>
+  //       <img src={event.images[1].url} />
+  //       <h2>{event.name}</h2>
+  //       <h3>{event._embedded.venues[0].name}</h3>
+  //       <a href={event.url} target='_blank'>
+  //         Click here for event details.
+  //       </a>
+  //     </div>
+  //   ))
+  // }
 
   return (
     <div>
       <h1>This is Ticketmaster</h1>
+      {/* {eventMapping} */}
       {events?.map((event, index) => (
-        <h2 key={index}>{event.name}</h2>
+        <div key={index}>
+          <img src={event.images[1].url} className='image' />
+          <h2>{event.name}</h2>
+          <h3>{event._embedded.venues[0].name}</h3>
+          <div>
+            <span>
+              {event.dates.start.localDate} @ {event.dates.start.localTime}
+            </span>
+          </div>
+          <a href={event.url} target='_blank'>
+            Click here for event details.
+          </a>
+        </div>
       ))}
     </div>
   )
